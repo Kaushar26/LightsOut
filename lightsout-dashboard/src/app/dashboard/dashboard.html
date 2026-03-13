@@ -1,0 +1,26 @@
+<h1>LightsOut Dashboard</h1>
+<button (click)="logout()">Logout</button>
+
+<h1>Drivers</h1>
+
+<div *ngFor="let d of drivers">
+  {{d.name}} - {{d.team}} - {{d.points}}
+</div>
+
+<h2>Driver Standings</h2>
+
+<table border="1">
+
+<tr>
+<th>Name</th>
+<th>Team</th>
+<th>Points</th>
+</tr>
+
+<tr *ngFor="let d of drivers">
+<td>{{d.name}}</td>
+<td>{{d.team}}</td>
+<td>{{d.points}}</td>
+</tr>
+
+</table>

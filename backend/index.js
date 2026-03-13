@@ -12,6 +12,20 @@ app.use(express.json());
 // routes
 app.use("/api/drivers", require("./routes/driverRoutes"));
 
+app.get("/api/telemetry", async (req, res) => {
+  try {
+
+    const response = await fetch("https://api.openf1.org/v1/drivers");
+
+    const data = await response.json();
+
+    res.json(data.slice(0,10)); // send first 10 drivers
+
+  } catch (error) {
+    res.status(500).json({error:"Failed to fetch telemetry"});
+  }
+});
+
 // test route
 app.get("/", (req, res) => {
   res.send("Backend running");
